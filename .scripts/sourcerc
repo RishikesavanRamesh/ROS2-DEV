@@ -15,4 +15,4 @@ export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
 export ROS_TRACE_DIR=/workspace/src/dev/trace
 
-source /workspace/install/setup.bash
+[ -f /workspace/install/setup.bash ] && source /workspace/install/setup.bash
