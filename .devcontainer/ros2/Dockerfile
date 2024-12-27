@@ -48,7 +48,7 @@ RUN chmod 0440 /etc/sudoers.d/$USERNAME
     
 COPY <<EOF /post-create-script.sh
 #!/bin/bash
-bash /workspace/.scripts/print_packages.bash
+bash /workspace/.scripts/post-create-script.bash
 EOF
 
 RUN chmod +x /post-create-script.sh
