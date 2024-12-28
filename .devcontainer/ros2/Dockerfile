@@ -5,7 +5,7 @@ ARG GROUPNAME="developer"
 ARG GROUP_GID="1000"
 ARG USER_UID="1000"
 # Conditionally set the base image based on the argument
-FROM docker.io/ros:${ROS_DISTRO}
+FROM eprosima/vulcanexus:${ROS_DISTRO}-desktop
 
 ARG ROS_DISTRO
 ARG USERNAME
