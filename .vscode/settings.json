@@ -173,4 +173,19 @@
     //     "terminal.foreground": "#00ffb3",
     //     "terminal.background": "#000000"
     // }
+
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+          {
+            "scope": [
+              "comment",
+              "comment.block.documentation"
+            ],
+            "settings": {
+              "foreground": "#429e62"  // You can use a less visible color
+            }
+          }
+        ]
+      }
+      
 }
