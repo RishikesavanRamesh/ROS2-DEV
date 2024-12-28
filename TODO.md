@@ -145,3 +145,22 @@ also changed for /etc/sudoers file
 ############
 
 using with  priviledged, causes no ros2 transport over dds, with the given xml config.
+
+
+
+################
+################
+################
+################
+################
+################
+
+
+configuring pre-commit
+
+sudo apt install locales;
+sudo locale-gen en_US.UTF-8
+sudo update-locale LANG=en_US.UTF-8
+
+pip3 install pre-commit ; 
+sudo apt install python3-ament-cpplint python3-ament-cppcheck python3-ament-copyright -y
