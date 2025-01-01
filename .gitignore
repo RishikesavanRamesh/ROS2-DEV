@@ -12,3 +12,5 @@ core
 .venv
 
 **/.env
+
+.bin
