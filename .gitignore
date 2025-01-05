@@ -1,7 +1,7 @@
 src/*
 
 !src/.gitkeep
-!src/ros2.repos
+!src/ros2.repos.template
 
 build
 install
