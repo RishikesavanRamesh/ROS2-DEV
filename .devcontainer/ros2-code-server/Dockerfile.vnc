@@ -23,14 +23,10 @@ ENV HOME=/root \
     DISPLAY=:0.0 
 
 COPY <<EOF /app/entrypoint.sh
-
 #!/bin/bash
 set -ex
-
 exec supervisord -c /app/supervisord.conf
-
 EOF
-
 
 COPY <<EOF /app/supervisord.conf
 [supervisord]
@@ -39,13 +35,11 @@ nodaemon=true
 files = /app/conf.d/*.conf
 EOF
 
-
 COPY <<EOF /app/conf.d/fluxbox.conf
 [program:fluxbox]
 command=fluxbox
 autorestart=true
 EOF
-
 
 COPY <<EOF /app/conf.d/websockify.conf
 [program:websockify]
@@ -53,13 +47,11 @@ command=websockify --web /usr/share/novnc 8080 localhost:5900
 autorestart=true
 EOF
 
-
 COPY <<EOF /app/conf.d/x11vnc.conf
 [program:x11vnc]
 command=x11vnc -forever -shared
 autorestart=true
 EOF
-
 
 COPY <<EOF /app/conf.d/xvfb.conf
 [program:xvfb]
