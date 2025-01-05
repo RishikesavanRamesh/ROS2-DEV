@@ -2,9 +2,32 @@ add a readme
 add ros2-devcontaioner like admiring samples ,
 add about windows, codespaces, and linux support, 
 **explain the setup , ssh , docker build workflow, and so on** .... :: marked as must
-~~explain the .env file things and everything else etc ...~~ dropped such setting
-~~also explain ( yet to be added ) build tasks configurations... ~~
 might also wanna add linting and batches for verifing features...
+move the todo to github project
+
+- EP25 tasks for gdb also 
+- check if adding the user developer to dialout group is needed
+- also add docker security tesing reports convincingly  
+
+- docker file should be images on diff levels based on the base, simulation, , full, desktop or any other intermediate levels and should be build and exported , thinking in that perspective. eg: desktop may have eclipse trace-compass, but base should not even have unminimized mans.
+
+- use file-server as needed and opt. eg: in the packages print, or in the actions build ( docker file build ) getting the working versions or new install instructions of softwares. as a script. this will increase maintainability
+
+- add build results in readme, which is working and which is not,
+- think of including the simple tracer( from the construct )in full; and the binary should be build in separate repo, and be hosted there, and the getting and install will be using the file-server script.
+
+- add record and play topics, services( from jazzy ) tasks using ros2bag  ( do not use tasks heavily, but use scripts as they can be interfaced into tasks easily if needed)
+
+- ros2tracing should be enabled in linux only and if possible or document its limits for windows.  newly installed in system : lttng-modules-dkms ; and unminimized ; also installed ros-humble-tracetools*
+
+- installing tracecompass-server at /usr/bin/tracecompass-server will make the tracecompass server companion plugin for traccompass viewer
+
+
+- make the container defintions ( devcontainer totally, containerfile, and devcontainer features ) to be abled to run multiple times. as this would helps saving container and using the saved container... 
+
+- should have only less amount of configurations to the base image so to minimize image pulled time to devcontainer uptime...
+
+
 
 
 # EPs:
@@ -37,52 +60,38 @@ might also wanna add linting and batches for verifing features...
 
 - ~~EP23 why not mounting everything inside of /tmp/workspace so that one can easily save the contaienr for tools and softwares and the source code remains clean outside of container.~~  this is not needed as commiting containers will not have the mounts.
 
-- EP25 tasks for gdb also 
 
-- EP26 SHOULD ADD THE AUTO LISTING OF DIRS FOR INPUT FOR RTW TASKS
+~~EP26 SHOULD ADD THE AUTO LISTING OF DIRS FOR INPUT FOR RTW TASKS~~ should not focus on tightly binding the setup with vscode ( should be finely workable in cli)
 
-- check if adding the user developer to dialout group is needed
-- also add docker security tesing reports convincingly  
-- make the readme open when starting devcontainer
-- opening new terminals is slower ( ros, vulcanexus both are sourcing)
+~~- make the readme open when starting devcontainer~~ not necessary 
+
+~~- opening new terminals is slower ( ros, vulcanexus both are sourcing) ~~ this is solved already by only sourcing ros and not vulcanexus, where not needed..
 
 
-- add unminimize for manuals in devcontainer
+~~- add unminimize for manuals in devcontainer~~ will not focus on this as it is trivial
 
-- add colcon_ignore to all pakcages .gitignore
+~~- add colcon_ignore to all pakcages .gitignore ~~  nothing to do directly, in the setup. but has to be practiced.
 
-- add backward_ros in rtw_templates
-- check if the subpackages are working with existing tasks settings
+~~- add backward_ros in rtw_templates ~~  will not be feasible to do this in separate fork or in mainstream repo with pr as it is a development mainly for development , though is very simple to add.. 
 
-- docker file should be images on diff levels based on the base, simulation, , full, desktop or any other intermediate levels and should be build and exported , thinking in that perspective. eg: desktop may have eclipse trace-compass, but base should not even have unminimized mans.
+~~- check if the subpackages are working with existing tasks settings~~ done already
 
-- use file-server as needed and opt. eg: in the packages print, or in the actions build ( docker file build ) getting the working versions or new install instructions of softwares. as a script. this will increase maintainability
+~~- git username and email has to be configured firstly. then github can be connected with the same vscode account.( github account)~~
 
-- add build results in readme, which is working and which is not,
-- think of including the simple tracer( from the construct )in full; and the binary should be build in separate repo, and be hosted there, and the getting and install will be using the file-server script.
+~~- install xclip for tmux copy paste, icewm also~~ already done
 
-- add record and play topics, services( from jazzy ) tasks using ros2bag
+~~- add prebuilds for codespace~~ making saving and reusing containers will fulfil the requirement of this requirement.
 
-- newly installed in system : lttng-modules-dkms ; and unminimized ; also installed ros-humble-tracetools*
+~~- EP15 add the platformio, wowki sim within here,~~ configure and use them if and when they are needed( wowki is still a no, as it is oss but freemium and account needed)
+~~- EP17 colcon hooks location updated in jazzy, ( why not maintain two branch )~~ solved . two branch approch is hard to maintain, thus dropped..
 
-- ros2tracing should be enabled in linux only and if possible or document its limits for windows
+~~explain the .env file things and everything else etc ...~~ dropped such setting
+~~also explain ( yet to be added ) build tasks configurations... ~~
 
-
-
-
-- installing tracecompass-server at /usr/bin/tracecompass-server will make the tracecompass server companion plugin for traccompass viewer
-
-- git username and email has to be configured firstly. then github can be connected with the same vscode account.( github account)
-
-- install xclip for tmux copy paste, icewm also
-
-- add prebuilds for codespace
 ### for later
 
 - EP03 check and find if we can control the default location where the rosdep install python pacakges( using envs) and do multiple versions of things in one program using .dsv.in files' help // solved ; only needed in jazzy 
-- EP17 colcon hooks location updated in jazzy, ( why not maintain two branch )
-- EP20 RSS FEED OF github action builds of ros and other projects
-- EP15 add the platformio, wokwi sim within here 
+- EP20 RSS FEED OF github action builds of ros and other projects,>> not related to this directly but important.
 
 ## usbip
         - EP08 if codespace add the methods and tools if possible to connect local devices to the codespacee and create a compatible companion script 
@@ -144,7 +153,7 @@ also changed for /etc/sudoers file
 
 ############
 
-using with  priviledged, causes no ros2 transport over dds, with the given xml config.
+using with  priviledged, causes no ros2 transport over dds, with the given xml config. (fastdds)
 
 
 
