@@ -1,10 +1,18 @@
-# compose.yml
-include:
-  - path : 
-    - ../ros2/compose.yml
-    - override.yml
-
+# override.yml
 services:
+  ros-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sleep infinity
+    environment:
+      - DISPLAY=vnc:0.0
+    depends_on:
+      vnc:
+        condition: service_started
+    networks:
+      - x11
+      
   vnc:
     # image: theasp/novnc:latest
     image: manojm003/novnc:latest

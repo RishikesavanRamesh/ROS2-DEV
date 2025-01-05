@@ -1,5 +1,6 @@
 services:
   ros-dev:
+    container_name: ros-${ROS_DISTRO:-humble}-dev
     # image: rishikesavanramesh/ros2-dev # change this to your docker image
     # image: localhost/ros2_ros-dev # change this to your docker image
     build: 
@@ -24,18 +25,17 @@ services:
       - DISPLAY=:45 # ( see https://gist.github.com/RishikesavanRamesh/d8c085c958bc11e8562cd3db297e4eb8 )
 
     command: sleep infinity
-    user: ${USERNAME}
+    user: ${USERNAME:-developer}
     # network_mode: host
     
     # ipc: host
     # pid: host
 
     privileged: true
-    # security_opt: # strictly for developement 
-    #   - seccomp:unconfined
+    security_opt: # strictly for developement 
+      - seccomp:unconfined
     cap_add: # strictly for developement 
-      # - SYS_PTRACE
-      - all
+      - ALL
 
     # devices:
     #   - /dev:/dev    (for easy hot plugging use volumes instead)
@@ -56,12 +56,12 @@ services:
   #   volumes:
   #     - ../../.scripts/config/fluentbit:/conf
 
-  zenoh:
-    image: eclipse/zenoh-bridge-ros2dds
-    environment:
-      - ROS_DISTRO=humble
-    network_mode: host
-    command: -c /conf/zenoh.json5
-    volumes:
-      - ../../.scripts/config/zenoh:/conf
+  # zenoh:
+  #   image: eclipse/zenoh-bridge-ros2dds
+  #   environment:
+  #     - ROS_DISTRO=humble
+  #   network_mode: host
+  #   command: -c /conf/zenoh.json5
+  #   volumes:
+  #     - ../../.scripts/config/zenoh:/conf
 

@@ -1,13 +1,7 @@
 {
-	"name": "ros-dev",
-	// "remoteUser": "developer",
-	"dockerComposeFile": [
-		"compose.yml"
-	],
+	"dockerComposeFile": ["compose.yml"],
 	"service": "ros-dev",
-	"runServices": [
-		"ros-dev"
-	],
+	"runServices": ["ros-dev"],
 	"shutdownAction": "stopCompose",
 	"workspaceFolder": "/workspace",
 	"features": {
