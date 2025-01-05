@@ -1,0 +1,72 @@
+FROM debian:bullseye
+
+# Install git, supervisor, VNC, & X11 packages
+RUN set -ex; \
+    apt-get update; \
+    apt-get install -y \
+      bash \
+      fluxbox \
+      git \
+      net-tools \
+      novnc \
+      supervisor \
+      x11vnc \
+      xterm \
+      xvfb
+
+# Setup demo environment variables
+ENV HOME=/root \
+    DEBIAN_FRONTEND=noninteractive \
+    LANG=en_US.UTF-8 \
+    LANGUAGE=en_US.UTF-8 \
+    LC_ALL=C.UTF-8 \
+    DISPLAY=:0.0 
+
+COPY <<EOF /app/entrypoint.sh
+
+#!/bin/bash
+set -ex
+
+exec supervisord -c /app/supervisord.conf
+
+EOF
+
+
+COPY <<EOF /app/supervisord.conf
+[supervisord]
+nodaemon=true
+[include]
+files = /app/conf.d/*.conf
+EOF
+
+
+COPY <<EOF /app/conf.d/fluxbox.conf
+[program:fluxbox]
+command=fluxbox
+autorestart=true
+EOF
+
+
+COPY <<EOF /app/conf.d/websockify.conf
+[program:websockify]
+command=websockify --web /usr/share/novnc 8080 localhost:5900
+autorestart=true
+EOF
+
+
+COPY <<EOF /app/conf.d/x11vnc.conf
+[program:x11vnc]
+command=x11vnc -forever -shared
+autorestart=true
+EOF
+
+
+COPY <<EOF /app/conf.d/xvfb.conf
+[program:xvfb]
+command=Xvfb :0 -screen 0 "%(ENV_DISPLAY_WIDTH)s"x"%(ENV_DISPLAY_HEIGHT)s"x24 -listen tcp -ac
+autorestart=true
+EOF
+
+RUN chmod +x /app/entrypoint.sh
+ENTRYPOINT ["/bin/bash", "/app/entrypoint.sh"]
+EXPOSE 8080	

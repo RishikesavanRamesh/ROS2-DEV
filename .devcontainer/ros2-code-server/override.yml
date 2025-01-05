@@ -14,13 +14,13 @@ services:
       - x11
       
   vnc:
-    # image: theasp/novnc:latest
-    image: manojm003/novnc:latest
+    build:
+      context: ../ros2-code-server/.
+      dockerfile: Dockerfile.vnc
     environment:
       # Adjust to your screen size
       - DISPLAY_WIDTH=1920
       - DISPLAY_HEIGHT=1080
-      - RUN_XTERM=no
     ports:
       - "8080:8080"
     networks:
