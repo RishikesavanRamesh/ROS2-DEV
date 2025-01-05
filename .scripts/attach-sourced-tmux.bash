@@ -15,8 +15,8 @@ if ! tmux has-session -t $SESSION_NAME 2>/dev/null; then
     tmux send-keys -t $SESSION_NAME 'tmux bind C-v run "tmux set-buffer $(xclip -o -sel clip); tmux paste-buffer"' C-m
 
     # Set background and foreground colors for the status bar
-    tmux send-keys -t $SESSION_NAME 'tmux set status-bg colour17' C-m
-    tmux send-keys -t $SESSION_NAME 'tmux set status-gg colour81' C-m
+    tmux send-keys -t $SESSION_NAME 'tmux set status-bg colour255' C-m
+    tmux send-keys -t $SESSION_NAME 'tmux set status-fg colour166' C-m
     
 
     # Set the default command to source ROS environment and start bash

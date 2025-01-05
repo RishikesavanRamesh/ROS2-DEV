@@ -15,13 +15,12 @@ if ! tmux has-session -t $SESSION_NAME 2>/dev/null; then
     tmux send-keys -t $SESSION_NAME 'tmux bind C-v run "tmux set-buffer $(xclip -o -sel clip); tmux paste-buffer"' C-m
 
     # Set status bar background and foreground colors for this session
-    tmux send-keys -t $SESSION_NAME 'tmux set status-bg red' C-m
+    tmux send-keys -t $SESSION_NAME 'tmux set status-bg violet' C-m
     tmux send-keys -t $SESSION_NAME 'tmux set status-fg white' C-m
 
     # Set the default command to bash in this session
     tmux send-keys -t $SESSION_NAME 'tmux set-option default-command "bash"' C-m
-
-
+    tmux send-keys -t $SESSION_NAME 'bash' C-m
     tmux send-keys -t $SESSION_NAME 'clear ; echo ">>> ros2 not sourced. :("' C-m
 fi
 
