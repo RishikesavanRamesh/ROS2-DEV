@@ -1,1 +1,29 @@
-../ros2/devcontainer.json
+{
+	"dockerComposeFile": ["compose.yml"],
+	"service": "ros-dev",
+	"runServices": ["ros-dev"],
+	"shutdownAction": "stopCompose",
+	"workspaceFolder": "/workspace",
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.cpptools",
+				"ms-vscode.cpptools-themes",
+				"twxs.cmake",
+				"donjayamanne.python-extension-pack",
+				"eamodio.gitlens",
+				"ms-iot.vscode-ros",
+				"ms-azuretools.vscode-docker",
+				"ms-vscode.cmake-tools",
+				"eclipse-cdt.vscode-trace-extension",
+				"eclipse-cdt.vscode-trace-server",
+				"redhat.vscode-xml",
+				"ms-toolsai.jupyter"
+			]
+		}
+	},
+	"postCreateCommand": "bash /post-create-script.sh"
+}
