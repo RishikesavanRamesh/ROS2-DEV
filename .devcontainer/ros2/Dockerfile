@@ -18,7 +18,7 @@ ENV SHELL /bin/bash
 # # Install sudo
 RUN <<EOF
 apt-get update 
-apt-get install -y sudo openssh-client rsyslog python3-pip curl
+apt-get install -y sudo openssh-client rsyslog python3-pip curl zip unzip 
 apt-get clean
 rm -rf /var/lib/apt/lists/*
 EOF
