@@ -1,0 +1,3 @@
+[submodule "ros_team_workspace"]
+	path = ros_team_workspace
+	url = https://github.com/StoglRobotics/ros_team_workspace.git
