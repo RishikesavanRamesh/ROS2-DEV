@@ -175,4 +175,5 @@ pip3 install pre-commit ;
 sudo apt install python3-ament-cpplint python3-ament-cppcheck python3-ament-copyright -y
 
 #test-signing-commit 
-# test-singing-commit :container :emacs-tramp :magit
+# test-singing-commit :container :emacs-tramp :magit  ====> sign missed 
+# retrying again 
