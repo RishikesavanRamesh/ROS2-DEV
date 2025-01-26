@@ -183,3 +183,4 @@ sudo apt install python3-ament-cpplint python3-ament-cppcheck python3-ament-copy
 
 
 ## signing test 04
+whoami
